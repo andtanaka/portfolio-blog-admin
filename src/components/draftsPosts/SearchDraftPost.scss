@@ -1,0 +1,33 @@
+.form-search-products {
+  margin: 1rem 0 1rem 0;
+  & .form-label {
+    margin: 0;
+    margin-bottom: 0.2rem;
+  }
+
+  @media screen and (max-width: 580px) {
+    padding: 0 3rem 0 3rem;
+  }
+  @media screen and (max-width: 412px) {
+    padding: 0 2rem 0 2rem;
+  }
+
+  @media screen and (max-width: 320px) {
+    padding: 0;
+  }
+}
+
+input.form-check-input.custom-form-check-input {
+  &:checked,
+  &:focus,
+  &:active {
+    border: #d96277;
+  }
+  &:focus,
+  &:active {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem #d962785e;
+  }
+  &:checked {
+    background-color: #d96277;
+  }
+}

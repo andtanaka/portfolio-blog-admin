@@ -1,0 +1,10 @@
+.container-form {
+  padding: 2rem;
+  margin: 1rem auto 1rem auto;
+  background-color: rgb(246, 242, 242);
+  max-width: 520px;
+
+  @media screen and (max-width: 420px) {
+    padding: 1rem;
+  }
+}

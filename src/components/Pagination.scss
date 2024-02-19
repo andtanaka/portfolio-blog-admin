@@ -1,0 +1,35 @@
+.input-pagination {
+  width: 120px;
+  & > * {
+    & input {
+      text-align: center;
+    }
+  }
+}
+
+.nav-pagination {
+  & > .pagination {
+    & > * {
+      & .page-link {
+        background-color: white;
+        color: black;
+        box-shadow: none;
+
+        &:focus,
+        &:hover,
+        & > span:focus,
+        & > span:hover {
+          background-color: white;
+          color: #d96277;
+          text-decoration: underline;
+        }
+
+        &.active {
+          color: white;
+          background-color: #d96277 !important;
+          border: solid 1px #d96277 !important;
+        }
+      }
+    }
+  }
+}
