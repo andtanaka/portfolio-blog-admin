@@ -5,7 +5,9 @@ import parse from 'html-react-parser'; //html to jsx
 import { Container } from 'react-bootstrap';
 
 const PreviewPost = ({ post }) => {
-  const content = /<body.*?>([\s\S]*)<\/body>/.exec(post.htmlBody)[1];
+  const content = post.htmlBody
+    ? /<body.*?>([\s\S]*)<\/body>/.exec(post.htmlBody)[1]
+    : '';
 
   return (
     <div>

@@ -1,9 +1,9 @@
-import './CardsDraftsPosts.scss';
+import styles from './CardsDraftsPosts.module.scss';
 import { toast } from 'react-toastify';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useRemoveDraftPostMutation } from '../../store';
-import ModalEditNameDraftPost from './ModalEditNameDaftPost';
+import ModalEditTitleDraftPost from './ModalEditTitleDaftPost';
 
 const CardsDraftsPosts = ({ draftPosts }) => {
   const [removeDraftPost] = useRemoveDraftPostMutation();
@@ -21,16 +21,13 @@ const CardsDraftsPosts = ({ draftPosts }) => {
   return (
     <Container className="p-0">
       {draftPosts.map((p) => (
-        <Card key={p._id} className="draft-post-card">
-          <Card.Body as={Row}>
-            <Col xs={12} sm={8} md={10} className="p-0">
-              <Card.Title>
-                <ModalEditNameDraftPost post={p}>
-                  {p.title}
-                </ModalEditNameDraftPost>
-              </Card.Title>
-              <Card.Text>{p.subtitle}</Card.Text>
-            </Col>
+        <Card key={p._id} className={styles.draftPostCard}>
+          <Card.Body as={Row} className={styles.cardBody}>
+            <ModalEditTitleDraftPost post={p}>
+              <Card.Title className={styles.cardTitle}>{p.title}</Card.Title>
+              <Card.Text className={styles.cardText}>{p.subtitle}</Card.Text>
+            </ModalEditTitleDraftPost>
+
             <Col className="d-flex d-sm-block my-md-auto p-0">
               <div className="w-md-100 text-end mt-auto my-md-auto">
                 <Button

@@ -1,4 +1,4 @@
-import './ModalCreateDaftPost.scss';
+import './ModalForm.scss';
 import { useState } from 'react';
 import { Button, Form, Row } from 'react-bootstrap';
 import Modal from 'react-bootstrap/modal';
@@ -68,6 +68,8 @@ const ModalCreateDraftPost = ({ children }) => {
                 <Form.Label>Subtítulo do post</Form.Label>
                 <Form.Control
                   type="string"
+                  as="textarea"
+                  style={{ height: '100px' }}
                   placeholder="Resumo do que será apresentado no post"
                   {...register('subtitle')}
                 />

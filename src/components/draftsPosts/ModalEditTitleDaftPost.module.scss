@@ -1,0 +1,7 @@
+.buttonArea {
+  padding: 0;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}

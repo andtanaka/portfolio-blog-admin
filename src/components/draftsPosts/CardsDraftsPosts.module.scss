@@ -1,6 +1,6 @@
 @import '../../styles/variables.scss';
 
-.draft-post-card {
+.draftPostCard {
   background-color: $neutral-color-52;
   color: $neutral-color-71;
   overflow: hidden;
@@ -9,32 +9,32 @@
   height: 150px !important;
   padding: 1.5rem;
 
-  & > .card-body {
+  & > .cardBody {
     width: 100%;
-  }
 
-  & > * .card-title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: 1.2em;
-    white-space: nowrap;
-  }
+    .cardTitle {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 1.2em;
+      white-space: nowrap;
+    }
 
-  & > * .card-text {
-    display: block;
-    display: -webkit-box;
-    max-width: 100%;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    .cardText {
+      display: block;
+      display: -webkit-box;
+      max-width: 100%;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 
   @media screen and (max-width: 575px) {
     height: 180px !important;
     border-radius: 0;
 
-    & > * .card-text {
+    & > * .cardText {
       -webkit-line-clamp: 2;
       margin-bottom: 1rem;
     }

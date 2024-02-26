@@ -1,6 +1,7 @@
-import './ModalCreateDaftPost.scss';
+import './ModalForm.scss';
+import styles from './ModalEditTitleDaftPost.module.scss';
 import { useState } from 'react';
-import { Button, Form, Row } from 'react-bootstrap';
+import { Button, Col, Form, Row } from 'react-bootstrap';
 import Modal from 'react-bootstrap/modal';
 import { useForm } from 'react-hook-form';
 
@@ -8,7 +9,7 @@ import { toast } from 'react-toastify';
 import { useUpdateDraftPostMutation } from '../../store';
 import createName from '../../utils/createName';
 
-const ModalEditNameDraftPost = ({ post, children }) => {
+const ModalEditTitleDraftPost = ({ post, children }) => {
   const [updateDraftPost] = useUpdateDraftPostMutation();
   const {
     register,
@@ -46,7 +47,15 @@ const ModalEditNameDraftPost = ({ post, children }) => {
 
   return (
     <>
-      <Button onClick={() => setShow(true)}>{children}</Button>
+      <Col
+        onClick={() => setShow(true)}
+        xs={12}
+        sm={8}
+        md={10}
+        className={styles.buttonArea}
+      >
+        {children}
+      </Col>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Editar rascunho</Modal.Title>
@@ -67,7 +76,12 @@ const ModalEditNameDraftPost = ({ post, children }) => {
               </Form.Group>
               <Form.Group controlId="formGridSubtitle">
                 <Form.Label>Subtítulo do post</Form.Label>
-                <Form.Control type="string" {...register('subtitle')} />
+                <Form.Control
+                  as="textarea"
+                  type="string"
+                  style={{ height: '100px' }}
+                  {...register('subtitle')}
+                />
               </Form.Group>
             </Row>
           </Form>
@@ -80,4 +94,4 @@ const ModalEditNameDraftPost = ({ post, children }) => {
   );
 };
 
-export default ModalEditNameDraftPost;
+export default ModalEditTitleDraftPost;
