@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { BASE_URL, DRAFT_POST_URL } from '../../constants';
+import { BASE_URL, DRAFT_POST_URL } from '../../constants.js';
 
 const draftsPostsApi = createApi({
   reducerPath: 'draftsPosts',
@@ -32,7 +32,8 @@ const draftsPostsApi = createApi({
       }),
       getDraftPostById: builder.query({
         providesTags: (result, error, id) => {
-          return [{ type: 'DraftsPosts', id: id }];
+          // return ['DraftsPosts'];
+          return [{ type: 'DraftsPosts', id }];
         },
         query: (id) => {
           return {
@@ -43,8 +44,9 @@ const draftsPostsApi = createApi({
         },
       }),
       getDraftPostByName: builder.query({
-        providesTags: (result, error, id) => {
+        providesTags: (result, error) => {
           return [{ type: 'DraftsPosts', id: result._id }];
+          // return ['DraftsPosts'];
         },
         query: (name) => {
           return {

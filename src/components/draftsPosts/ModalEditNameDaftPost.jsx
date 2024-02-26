@@ -5,17 +5,22 @@ import Modal from 'react-bootstrap/modal';
 import { useForm } from 'react-hook-form';
 
 import { toast } from 'react-toastify';
-import { useAddDraftPostMutation } from '../../store';
+import { useUpdateDraftPostMutation } from '../../store';
 import createName from '../../utils/createName';
 
-const ModalCreateDraftPost = ({ children }) => {
-  const [createDraftPost] = useAddDraftPostMutation();
+const ModalEditNameDraftPost = ({ post, children }) => {
+  const [updateDraftPost] = useUpdateDraftPostMutation();
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm({});
+  } = useForm({
+    defaultValues: {
+      title: post.title,
+      subtitle: post.subtitle,
+    },
+  });
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -23,19 +28,16 @@ const ModalCreateDraftPost = ({ children }) => {
     setShow(false);
   };
 
-  const handleCreate = async ({ title, subtitle }) => {
+  const handleUpdate = async ({ title, subtitle }) => {
     try {
       const draft = {
         name: createName(title),
         title,
         subtitle,
-        subtopics: [],
-        tags: [],
-        body: '',
       };
-      await createDraftPost(draft).unwrap();
+      await updateDraftPost({ ...post, ...draft }).unwrap();
       handleClose();
-      toast.success('Rascunho salvo com sucesso');
+      toast.success('Título alterado com sucesso');
     } catch (err) {
       // console.log(err);
       toast.error(err?.data?.message || err.error);
@@ -47,7 +49,7 @@ const ModalCreateDraftPost = ({ children }) => {
       <Button onClick={() => setShow(true)}>{children}</Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Novo rascunho</Modal.Title>
+          <Modal.Title>Editar rascunho</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -56,7 +58,6 @@ const ModalCreateDraftPost = ({ children }) => {
                 <Form.Label>Título do post</Form.Label>
                 <Form.Control
                   type="string"
-                  placeholder="Nome do post"
                   {...register('title', { required: true })}
                   aria-invalid={errors.title ? 'true' : 'false'}
                 />
@@ -66,21 +67,17 @@ const ModalCreateDraftPost = ({ children }) => {
               </Form.Group>
               <Form.Group controlId="formGridSubtitle">
                 <Form.Label>Subtítulo do post</Form.Label>
-                <Form.Control
-                  type="string"
-                  placeholder="Resumo do que será apresentado no post"
-                  {...register('subtitle')}
-                />
+                <Form.Control type="string" {...register('subtitle')} />
               </Form.Group>
             </Row>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleSubmit(handleCreate)}>Salvar</Button>
+          <Button onClick={handleSubmit(handleUpdate)}>Salvar</Button>
         </Modal.Footer>
       </Modal>
     </>
   );
 };
 
-export default ModalCreateDraftPost;
+export default ModalEditNameDraftPost;

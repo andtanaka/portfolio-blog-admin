@@ -1,11 +1,11 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import authSliceReducer from './slices/authSlice';
+import authSliceReducer from './slices/authSlice.js';
 
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { usersApi } from './apis/userApi';
-import { postsApi } from './apis/postsApi';
-import { draftsPostsApi } from './apis/draftsPostsApi';
-import { tagsApi } from './apis/tagsApi';
+import { usersApi } from './apis/userApi.js';
+import { postsApi } from './apis/postsApi.js';
+import { draftsPostsApi } from './apis/draftsPostsApi.js';
+import { tagsApi } from './apis/tagsApi.js';
 
 export const store = configureStore({
   reducer: {
@@ -39,7 +39,7 @@ export {
   useDeleteUserMutation,
   useGetUserDetailsQuery,
   useUpdateUserMutation,
-} from './apis/userApi';
+} from './apis/userApi.js';
 
 export {
   useGetPostsQuery,
@@ -48,7 +48,7 @@ export {
   useAddPostMutation,
   useUpdatePostMutation,
   useRemovePostMutation,
-} from './apis/postsApi';
+} from './apis/postsApi.js';
 
 export {
   useGetDraftsPostsQuery,
@@ -57,7 +57,7 @@ export {
   useAddDraftPostMutation,
   useUpdateDraftPostMutation,
   useRemoveDraftPostMutation,
-} from './apis/draftsPostsApi';
+} from './apis/draftsPostsApi.js';
 
 export {
   useGetTagsQuery,
@@ -65,4 +65,4 @@ export {
   useAddTagMutation,
   useUpdateTagMutation,
   useRemoveTagMutation,
-} from './apis/tagsApi';
+} from './apis/tagsApi.js';

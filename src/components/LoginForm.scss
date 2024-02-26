@@ -1,7 +1,10 @@
+@import '../styles/variables.scss';
+
 .container-form {
+  color: $neutral-color-71;
   padding: 2rem;
   margin: 1rem auto 1rem auto;
-  background-color: rgb(241, 239, 239);
+  background-color: $neutral-color-52;
   max-width: 520px;
 
   @media screen and (max-width: 420px) {

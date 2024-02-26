@@ -1,0 +1,10 @@
+@import '../../styles/variables.scss';
+
+.renderContainer {
+  min-height: min(600px, 100%);
+  max-height: min(600px, 100%);
+
+  width: auto;
+  background-color: $neutral-color-02;
+  overflow-y: scroll;
+}

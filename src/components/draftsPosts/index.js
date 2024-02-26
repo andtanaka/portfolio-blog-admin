@@ -1,9 +1,9 @@
-import CardsDraftsPosts from './CardsDraftsPosts';
-import DraftsPostsList from './DraftsPostsList';
-import FormUpdateDraftPost from './FormUpdateDraftPost';
-import ModalCreateDraftPost from './ModalCreateDaftPost';
-import SearchDraftPost from './SearchDraftPost';
-import ViewDraftPost from './ViewDraftPost';
+import CardsDraftsPosts from './CardsDraftsPosts.jsx';
+import DraftsPostsList from './DraftsPostsList.jsx';
+import FormUpdateDraftPost from './FormUpdateDraftPost.jsx';
+import ModalCreateDraftPost from './ModalCreateDaftPost.jsx';
+import SearchDraftPost from './SearchDraftPost.jsx';
+import ViewDraftPost from './ViewDraftPost.jsx';
 
 export {
   CardsDraftsPosts,

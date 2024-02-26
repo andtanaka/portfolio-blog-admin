@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLogoutMutation } from '../store';
-import { logout } from '../store/slices/authSlice';
+import { logout } from '../store/slices/authSlice.js';
 
 function LogNavApp({ className }) {
   const { userInfo } = useSelector((state) => state.auth);
@@ -33,10 +33,10 @@ function LogNavApp({ className }) {
         </>
       ) : (
         <div>
-          <Link className="btn " to="/login">
+          <Link className="btn ms-2" to="/login">
             Login
           </Link>
-          <Link className="btn " to="/signup">
+          <Link className="btn ms-2 disabled" to="/signup">
             Sign up
           </Link>
         </div>

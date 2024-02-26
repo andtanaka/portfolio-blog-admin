@@ -21,11 +21,11 @@ const AppPage = () => {
               return (
                 <Col key={op.value} xs={6} sm={4} md={3}>
                   <Card
-                    className="bg-dark text-white text-center"
+                    className="text-center"
                     onClick={() => handleClick(op.value)}
                   >
                     <Card.Title>{op.icon}</Card.Title>
-                    <Card.Body className="">{op.label}</Card.Body>
+                    <Card.Body>{op.label}</Card.Body>
                   </Card>
                 </Col>
               );

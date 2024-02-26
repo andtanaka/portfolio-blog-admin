@@ -5,21 +5,18 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useUpdateDraftPostMutation } from '../../store';
 import * as DOMPurify from 'dompurify';
-import parse from 'html-react-parser';
 
-import { useEffect, useState } from 'react';
-import createName from '../../utils/createName';
+import createName from '../../utils/createName.js';
 
 const FormUpdateDraftPost = ({ post }) => {
-  const [updateDraftPost] = useUpdateDraftPostMutation();
-  const [content, setContent] = useState('');
+  const [updateDraftPost, { isLoading }] = useUpdateDraftPostMutation();
   const {
     register,
     formState: { errors },
     handleSubmit,
-    reset,
   } = useForm({
     defaultValues: {
+      _id: post._id,
       name: post.name,
       title: post.title,
       subtitle: post.subtitle,
@@ -37,6 +34,7 @@ const FormUpdateDraftPost = ({ post }) => {
     };
 
     try {
+      console.log({ ...post, ...draft });
       await updateDraftPost({ ...post, ...draft }).unwrap();
       toast.success('Post salvo');
     } catch (err) {
@@ -60,41 +58,45 @@ const FormUpdateDraftPost = ({ post }) => {
   return (
     <>
       <Form className="form-create-draft-post">
-        <Row>
-          <h3 className="title">Novo rascunho</h3>
-        </Row>
-        <Row className="mb-3">
-          <Form.Group controlId="formGridTitle">
-            <Form.Label>Título do post</Form.Label>
-            <Form.Control type="string" {...register('title')} />
-          </Form.Group>
-          <Form.Group controlId="formGridSubtitle">
-            <Form.Label>Subtítulo do post</Form.Label>
-            <Form.Control type="string" {...register('subtitle')} />
-          </Form.Group>
-          <Form.Group controlId="formGridBody">
-            <Form.Label>Conteúdo</Form.Label>
-            <Form.Control
-              type="string"
-              as="textarea"
-              {...register('body')}
-              style={{ height: '300px' }}
-            />
-            <small>Aceita formato markdown e html.</small>
-          </Form.Group>
-          {/* <Form.Group controlId="formGridTags">
+        <Form.Group controlId="formGridTitle">
+          <Form.Label>Título do post</Form.Label>
+          <Form.Control type="string" {...register('title')} />
+        </Form.Group>
+        <Form.Group controlId="formGridSubtitle">
+          <Form.Label>Subtítulo do post</Form.Label>
+          <Form.Control type="string" {...register('subtitle')} />
+        </Form.Group>
+        <Form.Group controlId="formGridBody">
+          <Form.Label>Conteúdo</Form.Label>
+          <Form.Control
+            type="string"
+            as="textarea"
+            {...register('body')}
+            style={{ height: '300px' }}
+          />
+          <small>Aceita formato markdown e html.</small>
+        </Form.Group>
+        {/* <Form.Group controlId="formGridTags">
             <Form.Label>Tags</Form.Label>
             <Form.Select aria-label="Select tags">{options}</Form.Select>
           </Form.Group> */}
 
-          <Form.Group className=" text-end pt-3">
-            <div>
-              <Button onClick={handleSubmit(handleUpdate)}>Salvar</Button>
-            </div>
-          </Form.Group>
-        </Row>
+        <Form.Group className="d-flex pt-3 justify-content-end">
+          <div className="pe-2">
+            <Button
+              onClick={() =>
+                navigate(`/admin/posts/draft/${post.name}/preview`)
+              }
+              disabled={isLoading}
+            >
+              Visualizar
+            </Button>
+          </div>
+          <div>
+            <Button onClick={handleSubmit(handleUpdate)}>Salvar</Button>
+          </div>
+        </Form.Group>
       </Form>
-      {content}
     </>
   );
 };

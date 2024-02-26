@@ -5,11 +5,11 @@ import { DraftsPostsList, SearchDraftPost } from '../components/draftsPosts';
 
 const DraftsPostsPage = () => {
   return (
-    <Container fluid>
+    <Container className="p-0">
       <Container>
         <SearchDraftPost url="/admin/posts/draft" />
       </Container>
-      <div className="wide-container m-auto">
+      <div className="m-auto">
         <DraftsPostsList />
       </div>
       <ToastContainer />

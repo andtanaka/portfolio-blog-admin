@@ -1,0 +1,12 @@
+@import '../../styles/variables.scss';
+
+.modal-content {
+  color: $neutral-color-71;
+
+  & > * {
+    & .form-label {
+      padding-top: 1em;
+      font-weight: 600;
+    }
+  }
+}

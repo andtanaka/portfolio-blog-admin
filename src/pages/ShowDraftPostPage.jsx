@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import { FormUpdateDraftPost, ViewDraftPost } from '../components/draftsPosts';
 import { useGetDraftPostByNameQuery } from '../store';
-import Loader from '../components/Loader';
+import Loader from '../components/Loader.jsx';
 import { useParams } from 'react-router-dom';
 
 const ShowDraftPostPage = () => {
@@ -20,10 +20,10 @@ const ShowDraftPostPage = () => {
   } else {
     content = (
       <Row>
-        <Col>
+        <Col xs={{ span: 12 }} lg={{ span: 6 }}>
           <FormUpdateDraftPost post={data} />
         </Col>
-        <Col>
+        <Col xs={{ span: 12 }} lg={{ span: 6 }}>
           <ViewDraftPost post={data} />
         </Col>
       </Row>
@@ -31,7 +31,7 @@ const ShowDraftPostPage = () => {
   }
 
   return (
-    <Container className="p-0">
+    <Container>
       {content}
       <ToastContainer />
     </Container>

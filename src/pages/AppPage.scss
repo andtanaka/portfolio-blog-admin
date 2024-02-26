@@ -1,7 +1,8 @@
+@import '../styles/variables.scss';
+
 .main-container {
   margin-top: 2rem;
   padding: 1rem 1rem 2rem 1rem;
-  background-color: rgb(241, 239, 239);
 
   @media screen and (max-width: 420px) {
     padding: 0.5rem 0 1rem 0;
@@ -11,11 +12,14 @@
 }
 
 .card {
+  color: $neutral-color-51;
+  font-weight: 600;
   height: 120px;
   margin: 1rem 0 0 0;
   padding: 1rem 0.2rem 1rem 0.2rem;
   display: flex;
   justify-content: center;
+  background-color: $bold-color;
 
   align-items: center;
 

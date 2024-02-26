@@ -1,3 +1,5 @@
+@import '../styles/variables.scss';
+
 .input-pagination {
   width: 120px;
   & > * {
@@ -11,23 +13,23 @@
   & > .pagination {
     & > * {
       & .page-link {
-        background-color: white;
-        color: black;
+        background-color: $neutral-color-51;
+        color: $neutral-color-71;
         box-shadow: none;
 
         &:focus,
         &:hover,
         & > span:focus,
         & > span:hover {
-          background-color: white;
-          color: #d96277;
+          background-color: $neutral-color-51;
+          color: $bold-color;
           text-decoration: underline;
         }
 
         &.active {
-          color: white;
-          background-color: #d96277 !important;
-          border: solid 1px #d96277 !important;
+          color: $neutral-color-51;
+          background-color: $bold-color !important;
+          border: solid 1px $bold-color !important;
         }
       }
     }

@@ -1,14 +1,4 @@
-.btn {
-  background-color: #d96277;
-  border: none;
-  color: white;
-
-  &:active,
-  &:hover {
-    background-color: #d96277;
-    color: white;
-  }
-}
+@import '../styles/variables.scss';
 
 .sidemenu {
   display: flex;
@@ -63,8 +53,8 @@
     cursor: pointer;
     &:hover,
     &:active {
-      background-color: #d96277;
-      color: white;
+      background-color: $bold-color;
+      color: $neutral-color-51;
     }
   }
 }

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { BASE_URL, TAG_URL } from '../../constants';
+import { BASE_URL, TAG_URL } from '../../constants.js';
 
 const tagsApi = createApi({
   reducerPath: 'tags',

@@ -1,11 +1,14 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Navigate } from 'react-router-dom';
 
 import HeaderApp from './HeaderApp';
 import SidebarMenu from './SidebarMenu';
+import { useSelector } from 'react-redux';
 
 const RootApp = () => {
-  return (
+  const { userInfo } = useSelector((state) => state.auth);
+
+  return userInfo && userInfo.isAdmin ? (
     <>
       <HeaderApp />
       <main>
@@ -13,6 +16,8 @@ const RootApp = () => {
         <Outlet />
       </main>
     </>
+  ) : (
+    <Navigate to="/login" replace />
   );
 };
 

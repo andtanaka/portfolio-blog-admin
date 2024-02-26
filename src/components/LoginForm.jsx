@@ -4,9 +4,9 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { setCredentials } from '../store/slices/authSlice';
+import { setCredentials } from '../store/slices/authSlice.js';
 import { toast } from 'react-toastify';
-import { useLoginMutation } from '../store/apis/userApi';
+import { useLoginMutation } from '../store/apis/userApi.js';
 
 const LoginForm = () => {
   const {

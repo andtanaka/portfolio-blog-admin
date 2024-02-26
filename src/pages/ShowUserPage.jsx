@@ -1,9 +1,9 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
-import Loader from '../components/Loader';
+import Loader from '../components/Loader.jsx';
 import { ToastContainer } from 'react-toastify';
 import { useGetProfileQuery } from '../store';
-import ShowUserProfile from '../components/ShowUserProfile';
+import ShowUserProfile from '../components/ShowUserProfile.jsx';
 
 const ShowUserPage = () => {
   const { data, error, isLoading } = useGetProfileQuery();
