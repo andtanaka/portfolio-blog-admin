@@ -33,13 +33,13 @@ const FormUpdateDraftPost = ({ post }) => {
     }
   };
 
-  // const options = (
-  //   <>
-  //     {tags.map((tag) => (
-  //       <option value={tag.value}>{tag.label}</option>
-  //     ))}
-  //   </>
-  // );
+  const options = (
+    <>
+      {post.tags.map((tag) => (
+        <option value={tag._id}>{tag.name}</option>
+      ))}
+    </>
+  );
 
   useEffect(() => {
     setFocus('body');
@@ -52,10 +52,10 @@ const FormUpdateDraftPost = ({ post }) => {
           <Form.Label>Título do post</Form.Label>
           <Form.Control type="string" {...register('title')} disabled />
         </Form.Group>
-        {/* <Form.Group controlId="formGridTags">
-            <Form.Label>Tags</Form.Label>
-            <Form.Select aria-label="Select tags">{options}</Form.Select>
-          </Form.Group> */}
+        <Form.Group controlId="formGridTags">
+          <Form.Label>Tags</Form.Label>
+          <Form.Select aria-label="Select tags">{options}</Form.Select>
+        </Form.Group>
         <Form.Group controlId="formGridBody">
           <Form.Label>Conteúdo</Form.Label>
           <Form.Control

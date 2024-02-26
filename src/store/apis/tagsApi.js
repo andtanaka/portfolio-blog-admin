@@ -12,7 +12,7 @@ const tagsApi = createApi({
         providesTags: (result, error, arg) => {
           const tags = [];
           if (result) {
-            result.map((tag) => {
+            result.tags.map((tag) => {
               return tags.push({ type: 'Tags', id: tag._id });
             });
           }
@@ -46,7 +46,7 @@ const tagsApi = createApi({
         query: (data) => {
           return {
             url: `${TAG_URL}`,
-            method: 'TAG',
+            method: 'POST',
             credentials: 'include',
             body: data,
           };

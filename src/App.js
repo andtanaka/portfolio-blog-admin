@@ -11,6 +11,7 @@ import ShowUserPage from './pages/ShowUserPage.jsx';
 import DraftsPostsPage from './pages/DraftsPostsPage.jsx';
 import ShowDraftPostPage from './pages/ShowDraftPostPage.jsx';
 import PreviewDraftPostPage from './pages/PreviewDraftPostPage.jsx';
+import TagsPage from './pages/TagsPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
       // { path: 'posts/page/:pageNumber', element: <PostsPage /> },
       // { path: 'post/:name', element: <ShowPostPage /> },
 
-      // { path: 'tags', element: <ListTagsPage /> },
+      { path: 'tags', element: <TagsPage /> },
     ],
   },
 ]);

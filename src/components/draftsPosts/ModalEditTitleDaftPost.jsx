@@ -1,4 +1,4 @@
-import './ModalForm.scss';
+import '../../styles/ModalForm.scss';
 import styles from './ModalEditTitleDaftPost.module.scss';
 import { useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';

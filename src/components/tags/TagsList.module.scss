@@ -1,0 +1,18 @@
+@import '../../styles/variables.scss';
+.list {
+  margin-top: 1em;
+  list-style: none;
+  padding: 0;
+  .itemList {
+    display: flex;
+    background-color: $neutral-color-52;
+    color: $neutral-color-71;
+    letter-spacing: 1px;
+    padding: 0.5em 1em;
+    margin: 1em 0 1em 0;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
