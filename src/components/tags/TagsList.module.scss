@@ -5,11 +5,23 @@
   padding: 0;
   .itemList {
     display: flex;
+    flex-wrap: wrap;
     background-color: $neutral-color-52;
     color: $neutral-color-71;
     letter-spacing: 1px;
     padding: 0.5em 1em;
     margin: 1em 0 1em 0;
+
+    & > * .text {
+      display: block;
+      display: -webkit-box;
+      max-width: 100%;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      word-break: break-word;
+      text-overflow: ellipsis;
+    }
 
     &:hover {
       text-decoration: underline;

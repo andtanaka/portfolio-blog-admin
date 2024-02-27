@@ -6,9 +6,14 @@ import { useForm } from 'react-hook-form';
 
 import { toast } from 'react-toastify';
 import { useAddTagMutation } from '../../store';
+import { useDispatch, useSelector } from 'react-redux';
+import { setOptionsTags } from '../../store/slices/tagSlice';
 
 const ModalCreateTag = ({ children }) => {
   const [createTag] = useAddTagMutation();
+  const { optionsTags } = useSelector((state) => state.tag);
+  const dispatch = useDispatch();
+
   const {
     register,
     formState: { errors },
@@ -24,9 +29,17 @@ const ModalCreateTag = ({ children }) => {
 
   const handleCreate = async ({ name }) => {
     try {
-      await createTag({ name }).unwrap();
+      const res = await createTag({ name }).unwrap();
       handleClose();
       toast.success('Tag criada com sucesso');
+
+      const newTag = {
+        value: res._id,
+        label: res.name,
+      };
+      const tags = [...optionsTags, newTag];
+
+      dispatch(setOptionsTags(tags));
     } catch (err) {
       // console.log(err);
       toast.error(err?.data?.message || err.error);

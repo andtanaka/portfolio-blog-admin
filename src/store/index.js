@@ -6,6 +6,7 @@ import { usersApi } from './apis/userApi.js';
 import { postsApi } from './apis/postsApi.js';
 import { draftsPostsApi } from './apis/draftsPostsApi.js';
 import { tagsApi } from './apis/tagsApi.js';
+import tagSliceReducer from './slices/tagSlice.js';
 
 export const store = configureStore({
   reducer: {
@@ -13,7 +14,7 @@ export const store = configureStore({
     [postsApi.reducerPath]: postsApi.reducer,
     [draftsPostsApi.reducerPath]: draftsPostsApi.reducer,
     [tagsApi.reducerPath]: tagsApi.reducer,
-
+    tag: tagSliceReducer,
     auth: authSliceReducer,
   },
   middleware: (getDefaultMiddleware) => {
