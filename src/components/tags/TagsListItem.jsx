@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom';
 import styles from './TagsList.module.scss';
+import { FaRegTrashAlt, FaRegEdit } from 'react-icons/fa';
+
 import { Button } from 'react-bootstrap';
-import { useRemoveTagMutation } from '../../store';
+import { useGetTagByIdQuery, useRemoveTagMutation } from '../../store';
 import { toast } from 'react-toastify';
+import ModalUpdateTag from './ModalUpdateTag';
+import Loader from '../Loader';
 
 const TagsListItem = ({ tag }) => {
   const [removeTag, { isLoading: loadingRemove }] = useRemoveTagMutation();
@@ -16,9 +20,6 @@ const TagsListItem = ({ tag }) => {
       toast.error(err?.data?.message || err.error);
     }
   };
-  const handleUpdate = (id) => {
-    console.log(`Update ${id}`);
-  };
 
   return (
     <li className={styles.itemList}>
@@ -29,13 +30,15 @@ const TagsListItem = ({ tag }) => {
         </Link>
       </div>
       <div className="ms-auto">
-        <Button onClick={() => handleUpdate(tag._id)}>Editar</Button>
+        <ModalUpdateTag tag={tag}>
+          <FaRegEdit />
+        </ModalUpdateTag>
         <Button
           className="ms-2"
           onClick={() => handleDelete(tag._id)}
           disabled={loadingRemove}
         >
-          Excluir
+          <FaRegTrashAlt />
         </Button>
       </div>
     </li>

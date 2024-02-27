@@ -31,7 +31,7 @@ const tagsApi = createApi({
       }),
       getTagById: builder.query({
         providesTags: (result, error, id) => {
-          return [{ type: 'Tags', id: id }];
+          return [{ type: 'Tags', id: id }, 'Tags'];
         },
         query: (id) => {
           return {
@@ -54,11 +54,11 @@ const tagsApi = createApi({
       }),
       updateTag: builder.mutation({
         invalidatesTags: (results, error, data) => {
-          return [{ type: 'Tags', id: data.id }];
+          return [{ type: 'Tags', id: data._id }];
         },
         query: (data) => {
           return {
-            url: `${TAG_URL}/${data.id}`,
+            url: `${TAG_URL}/${data._id}`,
             method: 'PUT',
             credentials: 'include',
             body: data,

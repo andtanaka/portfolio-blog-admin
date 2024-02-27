@@ -5,28 +5,32 @@ import Modal from 'react-bootstrap/modal';
 import { useForm } from 'react-hook-form';
 
 import { toast } from 'react-toastify';
-import { useAddTagMutation } from '../../store';
+import { useUpdateTagMutation } from '../../store';
 
-const ModalCreateTag = ({ children }) => {
-  const [createTag] = useAddTagMutation();
+const ModalUpdateTag = ({ tag, children }) => {
+  const [updateTag, { isLoading }] = useUpdateTagMutation();
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      name: tag.name,
+    },
+  });
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
-    reset();
+    reset({ keepDefaultValues: true });
     setShow(false);
   };
 
-  const handleCreate = async ({ name }) => {
+  const handleUpdate = async ({ name }) => {
     try {
-      await createTag({ name }).unwrap();
+      await updateTag({ ...tag, name }).unwrap();
       handleClose();
-      toast.success('Tag criada com sucesso');
+      toast.success('Tag editada com sucesso');
     } catch (err) {
       // console.log(err);
       toast.error(err?.data?.message || err.error);
@@ -38,7 +42,7 @@ const ModalCreateTag = ({ children }) => {
       <Button onClick={() => setShow(true)}>{children}</Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Nova Tag</Modal.Title>
+          <Modal.Title>Editar Tag</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -47,7 +51,6 @@ const ModalCreateTag = ({ children }) => {
                 <Form.Label>Nome da tag</Form.Label>
                 <Form.Control
                   type="string"
-                  placeholder="Nome do post"
                   {...register('name', { required: true, pattern: /[a-z0-9]/ })}
                   aria-invalid={errors.name ? 'true' : 'false'}
                 />
@@ -65,11 +68,13 @@ const ModalCreateTag = ({ children }) => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleSubmit(handleCreate)}>Salvar</Button>
+          <Button onClick={handleSubmit(handleUpdate)} disabled={isLoading}>
+            Salvar
+          </Button>
         </Modal.Footer>
       </Modal>
     </>
   );
 };
 
-export default ModalCreateTag;
+export default ModalUpdateTag;
