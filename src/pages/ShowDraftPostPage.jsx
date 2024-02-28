@@ -21,10 +21,13 @@ const ShowDraftPostPage = () => {
     content = (
       <Row>
         <Col xs={{ span: 12 }} lg={{ span: 6 }}>
-          <FormUpdateDraftPost post={data} />
+          <FormUpdateDraftPost
+            post={data.post}
+            tagsOptions={data.tagsOptions}
+          />
         </Col>
         <Col xs={{ span: 12 }} lg={{ span: 6 }}>
-          <ViewDraftPost post={data} />
+          <ViewDraftPost post={data.post} />
         </Col>
       </Row>
     );

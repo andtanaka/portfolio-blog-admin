@@ -40,7 +40,7 @@ const PreviewDraftPostPage = () => {
               activeClass="active-scrollspy"
               className={styles.scrollspyContainer}
             >
-              <PreviewPost post={data} />
+              <PreviewPost post={data.post} />
             </ScrollSpy>
           </Col>
           <Col xs={{ span: 12, order: 1 }} md={{ span: 4, order: 2 }}>
@@ -55,7 +55,7 @@ const PreviewDraftPostPage = () => {
               </Form>
               <div className="d-md-block d-none">
                 <ul className={styles.subtopicsList}>
-                  {data.subtopics.map((topic) => (
+                  {data.post.subtopics.map((topic) => (
                     <Nav.Item as="li" key={topic.htmlId}>
                       <NavLink
                         as="a"

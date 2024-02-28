@@ -9,12 +9,12 @@ import { useNavigate } from 'react-router-dom';
 import { useGetTagsQuery, useUpdateDraftPostMutation } from '../../store';
 import * as DOMPurify from 'dompurify';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Loader from '../Loader';
 import { setOptionsTags } from '../../store/slices/tagSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
-const FormUpdateDraftPost = ({ post }) => {
+const FormUpdateDraftPost = ({ post, tagsOptions }) => {
   const dispatch = useDispatch();
   const { optionsTags } = useSelector((state) => state.tag);
   const animatedComponents = makeAnimated();
@@ -33,6 +33,7 @@ const FormUpdateDraftPost = ({ post }) => {
       _id: post._id,
       title: post.title,
       body: post.body,
+      tags: tagsOptions,
     },
   });
   const navigate = useNavigate();
@@ -42,14 +43,10 @@ const FormUpdateDraftPost = ({ post }) => {
   } else if (error) {
     content = <p>Erro</p>;
   } else {
-    tagsDB = [
-      ...data.tags.map((tag) => {
-        return { value: tag._id, label: tag.name };
-      }),
-    ];
+    tagsDB = data.tagsOptions;
     content = (
       <Controller
-        name="select"
+        name="tags"
         control={control}
         render={({ field }) => (
           <Select
@@ -64,11 +61,11 @@ const FormUpdateDraftPost = ({ post }) => {
     );
   }
 
-  const handleUpdate = async ({ body }) => {
+  const handleUpdate = async ({ body, tags }) => {
     const draft = {
       body: DOMPurify.sanitize(body),
+      tags,
     };
-
     try {
       await updateDraftPost({ ...post, ...draft }).unwrap();
       toast.success('Post salvo');
@@ -95,7 +92,10 @@ const FormUpdateDraftPost = ({ post }) => {
           <Form.Label>Título do post</Form.Label>
           <Form.Control type="string" {...register('title')} disabled />
         </Form.Group>
-        {content}
+        <Form.Group controlId="formGridTags">
+          <Form.Label>Tags</Form.Label>
+          {content}
+        </Form.Group>
         <Form.Group controlId="formGridBody">
           <Form.Label>Conteúdo</Form.Label>
           <Form.Control

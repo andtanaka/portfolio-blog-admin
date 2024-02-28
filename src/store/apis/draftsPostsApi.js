@@ -45,7 +45,7 @@ const draftsPostsApi = createApi({
       }),
       getDraftPostByName: builder.query({
         providesTags: (result, error) => {
-          return [{ type: 'DraftsPosts', id: result._id }];
+          return [{ type: 'DraftsPosts', id: result.post._id }];
           // return ['DraftsPosts'];
         },
         query: (name) => {
