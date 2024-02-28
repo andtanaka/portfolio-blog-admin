@@ -38,6 +38,20 @@ const FormUpdateDraftPost = ({ post, tagsOptions }) => {
   });
   const navigate = useNavigate();
 
+  const colourStyles = {
+    control: (styles) => ({
+      ...styles,
+      backgroundColor: 'white',
+    }),
+    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+      return {
+        ...styles,
+        backgroundColor: isFocused || isSelected ? '#01b6ad' : 'white',
+        color: 'black',
+      };
+    },
+  };
+
   if (loadingTags) {
     content = <Loader />;
   } else if (error) {
@@ -51,6 +65,7 @@ const FormUpdateDraftPost = ({ post, tagsOptions }) => {
         render={({ field }) => (
           <Select
             {...field}
+            styles={colourStyles}
             closeMenuOnSelect={false}
             components={animatedComponents}
             isMulti
