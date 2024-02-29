@@ -76,7 +76,7 @@ const postsApi = createApi({
         },
         query: (data) => {
           return {
-            url: `${POST_URL}/${data.id}`,
+            url: `${POST_URL}/${data._id}`,
             method: 'PUT',
             credentials: 'include',
             body: data,
