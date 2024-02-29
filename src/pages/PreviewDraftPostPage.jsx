@@ -12,15 +12,16 @@ import {
   Row,
 } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
-import { useGetDraftPostByNameQuery } from '../store';
+import { useGetDraftPostByIdQuery } from '../store';
 import Loader from '../components/Loader.jsx';
 import { useParams } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import PreviewPost from '../components/PreviewPost.jsx';
+import { MenuDraftPost } from '../components/draftsPosts';
 
 const PreviewDraftPostPage = () => {
-  const { name } = useParams();
-  const { data, isLoading, error } = useGetDraftPostByNameQuery(name);
+  const { id } = useParams();
+  const { data, isLoading, error } = useGetDraftPostByIdQuery(id);
 
   let content;
 
@@ -32,6 +33,12 @@ const PreviewDraftPostPage = () => {
   } else {
     content = (
       <>
+        {data.post.posted ? null : (
+          <Row>
+            <MenuDraftPost postId={id} />
+          </Row>
+        )}
+
         <Row className="mt-3">
           <Col xs={{ span: 12, order: 2 }} md={{ span: 8, order: 1 }}>
             <ScrollSpy

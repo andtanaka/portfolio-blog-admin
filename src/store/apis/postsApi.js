@@ -66,7 +66,7 @@ const postsApi = createApi({
             url: `${POST_URL}`,
             method: 'POST',
             credentials: 'include',
-            body: id,
+            body: { id },
           };
         },
       }),

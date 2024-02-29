@@ -1,0 +1,62 @@
+@import '../../styles/variables.scss';
+.menuContainer {
+  display: flex;
+  margin-top: 10px;
+  width: 350px;
+  justify-content: space-between;
+  padding: 0;
+
+  @media screen and (max-width: 580px) {
+    width: 100%;
+    justify-content: end;
+  }
+}
+
+.buttonIcon {
+  cursor: pointer;
+  display: flex;
+  flex-wrap: nowrap;
+  border-radius: 3em;
+
+  background-color: $neutral-color-02;
+  border: 1px solid $bold-color;
+  border-bottom: 3px solid $bold-color;
+
+  .textIcon {
+    font-size: 1.1em;
+    padding: 0 1.2em;
+    margin: auto;
+  }
+
+  .icon {
+    display: flex;
+    width: 3em;
+    height: 3em;
+    border-radius: 2em;
+    align-items: center;
+    justify-content: center;
+    background-color: $neutral-color-01;
+    border: 2px solid $bold-color;
+    z-index: 100;
+  }
+  &:hover,
+  &:active {
+    color: $neutral-color-51;
+    background-color: $bold-color;
+
+    .icon {
+      background-color: $neutral-color-02;
+    }
+  }
+  @media screen and (max-width: 580px) {
+    &:not(:hover) {
+      width: 3em;
+      border: none;
+      background-color: none;
+
+      .textIcon:not(:hover) {
+        display: none;
+      }
+    }
+  }
+}

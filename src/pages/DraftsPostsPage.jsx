@@ -1,4 +1,4 @@
-import './DraftsPostsPage.scss';
+import styles from './DraftsPostsPage.module.scss';
 import { Container } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
 import { DraftsPostsList, SearchDraftPost } from '../components/draftsPosts';

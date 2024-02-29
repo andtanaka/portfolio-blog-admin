@@ -1,6 +1,6 @@
-import FormPost from './FormPost';
+import FormPost from './FormUpdatePost';
 import PostsList from './PostsList';
 import SearchPost from './SearchPost';
-import TablePosts from './TablePosts';
+import CardsPosts from './CardsPosts';
 
-export { FormPost, PostsList, SearchPost, TablePosts };
+export { FormPost, PostsList, SearchPost, CardsPosts };

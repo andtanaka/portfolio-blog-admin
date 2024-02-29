@@ -1,14 +1,13 @@
-import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import { FormUpdateDraftPost, ViewDraftPost } from '../components/draftsPosts';
-import { useGetDraftPostByNameQuery } from '../store';
+import { useGetDraftPostByIdQuery } from '../store';
 import Loader from '../components/Loader.jsx';
 import { useParams } from 'react-router-dom';
 
 const ShowDraftPostPage = () => {
-  const { name } = useParams();
-  const { data, isLoading, error } = useGetDraftPostByNameQuery(name);
+  const { id } = useParams();
+  const { data, isLoading, error } = useGetDraftPostByIdQuery(id);
 
   let content;
 

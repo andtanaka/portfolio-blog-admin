@@ -1,20 +1,18 @@
-import './FormUpdateDraftPost.scss';
+import './FormUpdatePost.scss';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useForm, Controller } from 'react-hook-form';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-
-import { Button, Form } from 'react-bootstrap';
-import { useForm, Controller } from 'react-hook-form';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
-import { useGetTagsQuery, useUpdateDraftPostMutation } from '../../store';
 import * as DOMPurify from 'dompurify';
-
-import { useEffect } from 'react';
+import { toast } from 'react-toastify';
+import { Button, Form } from 'react-bootstrap';
+import { useGetTagsQuery, useUpdatePostMutation } from '../../store';
 import Loader from '../Loader';
 import { setOptionsTags } from '../../store/slices/tagSlice';
-import { useDispatch, useSelector } from 'react-redux';
 
-const FormUpdateDraftPost = ({ post, tagsOptions }) => {
+const FormUpdatePost = ({ post, tagsOptions }) => {
   const dispatch = useDispatch();
   const { optionsTags } = useSelector((state) => state.tag);
   const animatedComponents = makeAnimated();
@@ -27,7 +25,7 @@ const FormUpdateDraftPost = ({ post, tagsOptions }) => {
   let content = <></>;
   let tagsDB;
 
-  const [updateDraftPost, { isLoading }] = useUpdateDraftPostMutation();
+  const [updatePost, { isLoading }] = useUpdatePostMutation();
   const { register, handleSubmit, setFocus, control } = useForm({
     defaultValues: {
       _id: post._id,
@@ -78,14 +76,14 @@ const FormUpdateDraftPost = ({ post, tagsOptions }) => {
   }
 
   const handleUpdate = async ({ title, subtitle, body, tags }) => {
-    const draft = {
+    const postChanged = {
       title,
       subtitle,
       body: DOMPurify.sanitize(body),
       tags,
     };
     try {
-      await updateDraftPost({ ...post, ...draft }).unwrap();
+      await updatePost({ ...post, ...postChanged }).unwrap();
       toast.success('Post salvo');
     } catch (err) {
       console.log(err);
@@ -101,26 +99,18 @@ const FormUpdateDraftPost = ({ post, tagsOptions }) => {
     if (tagsDB) {
       dispatch(setOptionsTags(tagsDB));
     }
-    if (post.posted) {
-      navigate(`/admin/posts/${post.post}`);
-    }
   }, [data]);
 
   return (
     <>
       <Form className="form-create-draft-post">
         <Form.Group controlId="formGridTitle">
-          <Form.Label>Título</Form.Label>
+          <Form.Label>Título do post</Form.Label>
           <Form.Control type="string" {...register('title')} />
         </Form.Group>
         <Form.Group controlId="formGridSubtitle">
-          <Form.Label>Subtítulo</Form.Label>
-          <Form.Control
-            type="string"
-            {...register('subtitle')}
-            as="textarea"
-            style={{ height: '70px' }}
-          />
+          <Form.Label>Subtítulo do post</Form.Label>
+          <Form.Control type="string" {...register('subtitle')} />
         </Form.Group>
         <Form.Group controlId="formGridTags">
           <Form.Label>Tags</Form.Label>
@@ -139,12 +129,8 @@ const FormUpdateDraftPost = ({ post, tagsOptions }) => {
 
         <Form.Group className="d-flex pt-3 justify-content-end">
           <div className="pe-2">
-            <Button
-              onClick={() => navigate(`/admin/posts/draft/${post._id}/preview`)}
-              disabled={isLoading}
-            >
-              Visualizar
-            </Button>
+            {/* redirecionar ao blog */}
+            <Button>Visualizar</Button>
           </div>
           <div>
             <Button onClick={handleSubmit(handleUpdate)}>Salvar</Button>
@@ -155,4 +141,4 @@ const FormUpdateDraftPost = ({ post, tagsOptions }) => {
   );
 };
 
-export default FormUpdateDraftPost;
+export default FormUpdatePost;

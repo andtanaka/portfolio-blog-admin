@@ -1,6 +1,6 @@
 @import '../../styles/variables.scss';
 
-.draftPostCard {
+.postCard {
   background-color: $neutral-color-52;
   color: $neutral-color-71;
   overflow: hidden;
@@ -43,12 +43,4 @@
   // @media screen and (max-width: 320px) {
   //   height: 200px !important;
   // }
-}
-
-.buttonArea {
-  padding: 0;
-  cursor: pointer;
-  &:hover {
-    text-decoration: underline;
-  }
 }

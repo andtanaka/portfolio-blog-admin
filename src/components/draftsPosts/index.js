@@ -4,6 +4,7 @@ import FormUpdateDraftPost from './FormUpdateDraftPost.jsx';
 import ModalCreateDraftPost from './ModalCreateDaftPost.jsx';
 import SearchDraftPost from './SearchDraftPost.jsx';
 import ViewDraftPost from './ViewDraftPost.jsx';
+import MenuDraftPost from './MenuDraftPost.jsx';
 
 export {
   CardsDraftsPosts,
@@ -12,4 +13,5 @@ export {
   ModalCreateDraftPost,
   SearchDraftPost,
   ViewDraftPost,
+  MenuDraftPost,
 };

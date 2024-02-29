@@ -1,4 +1,4 @@
-import './PostsPage.scss';
+import styles from './PostsPage.module.scss';
 import { Container } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
 import { PostsList, SearchPost } from '../components/posts';
@@ -9,7 +9,7 @@ const PostsPage = () => {
       <Container>
         <SearchPost url="/admin/posts" />
       </Container>
-      <div className="wide-container m-auto">
+      <div className="m-auto">
         <PostsList />
       </div>
       <ToastContainer />

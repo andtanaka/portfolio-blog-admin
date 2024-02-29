@@ -12,6 +12,8 @@ import DraftsPostsPage from './pages/DraftsPostsPage.jsx';
 import ShowDraftPostPage from './pages/ShowDraftPostPage.jsx';
 import PreviewDraftPostPage from './pages/PreviewDraftPostPage.jsx';
 import TagsPage from './pages/TagsPage.jsx';
+import PostsPage from './pages/PostsPage.jsx';
+import ShowPostPage from './pages/ShowPostPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,12 +32,12 @@ const router = createBrowserRouter([
       { path: 'user', element: <ShowUserPage /> },
       { path: 'posts/draft', element: <DraftsPostsPage /> },
       { path: 'posts/draft/page/:pageNumber', element: <DraftsPostsPage /> },
-      { path: 'posts/draft/:name', element: <ShowDraftPostPage /> },
-      { path: 'posts/draft/:name/preview', element: <PreviewDraftPostPage /> },
+      { path: 'posts/draft/:id', element: <ShowDraftPostPage /> },
+      { path: 'posts/draft/:id/preview', element: <PreviewDraftPostPage /> },
 
-      // { path: 'posts', element: <PostsPage /> },
-      // { path: 'posts/page/:pageNumber', element: <PostsPage /> },
-      // { path: 'post/:name', element: <ShowPostPage /> },
+      { path: 'posts', element: <PostsPage /> },
+      { path: 'posts/page/:pageNumber', element: <PostsPage /> },
+      { path: 'posts/:id', element: <ShowPostPage /> },
 
       { path: 'tags', element: <TagsPage /> },
     ],
