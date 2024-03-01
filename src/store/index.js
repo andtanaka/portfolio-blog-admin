@@ -45,7 +45,9 @@ export {
 export {
   useGetPostsQuery,
   useGetSomePostsQuery,
+  useGetAllPostsQuery,
   useGetPostByIdQuery,
+  useGetPostByNameQuery,
   useAddPostMutation,
   useUpdatePostMutation,
   useRemovePostMutation,
@@ -54,7 +56,6 @@ export {
 export {
   useGetDraftsPostsQuery,
   useGetDraftPostByIdQuery,
-  useGetDraftPostByNameQuery,
   useAddDraftPostMutation,
   useUpdateDraftPostMutation,
   useRemoveDraftPostMutation,

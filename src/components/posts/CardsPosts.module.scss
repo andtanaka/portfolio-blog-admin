@@ -44,3 +44,11 @@
   //   height: 200px !important;
   // }
 }
+
+.buttonArea {
+  padding: 0;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}

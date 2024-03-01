@@ -1,0 +1,29 @@
+.fixContainer {
+  position: fixed;
+  @media screen and (max-width: 767px) {
+    position: relative;
+  }
+}
+
+.scrollspyContainer {
+  position: relative;
+  overflow: auto;
+  height: auto;
+  // overflow-y: scroll;
+}
+
+.formSearch {
+  max-width: 250px;
+  @media screen and (max-width: 767px) {
+    margin-left: auto;
+  }
+}
+
+.subtopicsList {
+  margin-top: 3em;
+  list-style: none;
+  & li {
+    font-weight: 500;
+    padding-top: 0.5em;
+  }
+}

@@ -1,4 +1,4 @@
-import styles from './PreviewDraftPostPage.module.scss';
+import styles from './PreviewPostPage.module.scss';
 import ScrollSpy from 'react-ui-scrollspy';
 
 import {
@@ -12,29 +12,29 @@ import {
   Row,
 } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
-import { useGetDraftPostByIdQuery } from '../store';
+import { useGetPostByIdQuery } from '../store/index.js';
 import Loader from '../components/Loader.jsx';
 import { useParams } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import PreviewPost from '../components/PreviewPost.jsx';
-import { MenuDraftPost } from '../components/draftsPosts';
+import MenuPost from '../components/posts/MenuPost.jsx';
 
-const PreviewDraftPostPage = () => {
+const PreviewPostPage = () => {
   const { id } = useParams();
-  const { data, isLoading, error } = useGetDraftPostByIdQuery(id);
+  const { data, isLoading, error } = useGetPostByIdQuery(id);
 
   let content;
 
   if (isLoading) {
     content = <Loader />;
   } else if (error) {
-    toast.error('Erro ao carregar rascunho');
+    toast.error('Erro ao carregar post');
     content = <p>Erro</p>;
   } else {
     content = (
       <>
         <Row>
-          <MenuDraftPost postId={id} />
+          <MenuPost postName={data.post} />
         </Row>
         <Row className="mt-3">
           <Col xs={{ span: 12, order: 2 }} md={{ span: 8, order: 1 }}>
@@ -87,4 +87,4 @@ const PreviewDraftPostPage = () => {
   );
 };
 
-export default PreviewDraftPostPage;
+export default PreviewPostPage;

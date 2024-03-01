@@ -11,6 +11,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useGetTagsQuery, useUpdatePostMutation } from '../../store';
 import Loader from '../Loader';
 import { setOptionsTags } from '../../store/slices/tagSlice';
+import createName from '../../utils/createName';
 
 const FormUpdatePost = ({ post, tagsOptions }) => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const FormUpdatePost = ({ post, tagsOptions }) => {
       subtitle: post.subtitle,
       body: post.body,
       tags: tagsOptions,
+      published: !post.stop,
     },
   });
   const navigate = useNavigate();
@@ -75,12 +77,14 @@ const FormUpdatePost = ({ post, tagsOptions }) => {
     );
   }
 
-  const handleUpdate = async ({ title, subtitle, body, tags }) => {
+  const handleUpdate = async ({ title, subtitle, body, tags, published }) => {
     const postChanged = {
+      name: createName(title),
       title,
       subtitle,
       body: DOMPurify.sanitize(body),
       tags,
+      stop: !published,
     };
     try {
       await updatePost({ ...post, ...postChanged }).unwrap();
@@ -125,6 +129,13 @@ const FormUpdatePost = ({ post, tagsOptions }) => {
             style={{ height: '300px' }}
           />
           <small>Aceita formato markdown e html.</small>
+          <Form.Group className="mt-2">
+            <Form.Check
+              type="switch"
+              label="Post publicado"
+              {...register('published')}
+            />
+          </Form.Group>
         </Form.Group>
 
         <Form.Group className="d-flex pt-3 justify-content-end">

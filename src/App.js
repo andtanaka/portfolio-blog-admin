@@ -14,6 +14,7 @@ import PreviewDraftPostPage from './pages/PreviewDraftPostPage.jsx';
 import TagsPage from './pages/TagsPage.jsx';
 import PostsPage from './pages/PostsPage.jsx';
 import ShowPostPage from './pages/ShowPostPage.jsx';
+import PreviewPostPage from './pages/PreviewPostPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
       { path: 'posts', element: <PostsPage /> },
       { path: 'posts/page/:pageNumber', element: <PostsPage /> },
       { path: 'posts/:id', element: <ShowPostPage /> },
+      { path: 'posts/:id/preview', element: <PreviewPostPage /> },
 
       { path: 'tags', element: <TagsPage /> },
     ],

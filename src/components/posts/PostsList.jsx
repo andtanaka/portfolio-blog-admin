@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import { useQuery } from '../../hooks/useQuery';
-import { useGetPostsQuery } from '../../store';
+import { useGetAllPostsQuery } from '../../store';
 import Pagination from '../Pagination';
 import CardsPosts from './CardsPosts';
 
@@ -13,7 +13,7 @@ const PostsList = () => {
   const sort = query.get('sort') || '';
   let content = <></>;
 
-  const { data, error, isLoading } = useGetPostsQuery({
+  const { data, error, isLoading } = useGetAllPostsQuery({
     text,
     sort,
     pageNumber,

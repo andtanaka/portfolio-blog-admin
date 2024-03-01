@@ -46,6 +46,28 @@ const postsApi = createApi({
           method: 'GET',
         }),
       }),
+      getAllPosts: builder.query({
+        providesTags: (result, error, arg) => {
+          const tags = [];
+          if (result) {
+            result.posts.map((post) => {
+              return tags.push({ type: 'Posts', id: post._id });
+            });
+          }
+          tags.push('Posts');
+          return tags;
+        },
+        query: ({ text, sort, pageNumber }) => ({
+          url: `${POST_URL}/all`,
+          method: 'GET',
+          credentials: 'include',
+          params: {
+            text,
+            sort,
+            pageNumber,
+          },
+        }),
+      }),
       getPostById: builder.query({
         providesTags: (result, error, id) => {
           return [{ type: 'Posts', id: id }];
@@ -53,6 +75,18 @@ const postsApi = createApi({
         query: (id) => {
           return {
             url: `${POST_URL}/${id}`,
+            method: 'GET',
+            credentials: 'include',
+          };
+        },
+      }),
+      getPostByName: builder.query({
+        providesTags: (result, error, id) => {
+          return [{ type: 'Posts', id: result.post._id }];
+        },
+        query: (name) => {
+          return {
+            url: `${POST_URL}/name/${name}`,
             method: 'GET',
             credentials: 'include',
           };
@@ -102,7 +136,9 @@ const postsApi = createApi({
 export const {
   useGetPostsQuery,
   useGetSomePostsQuery,
+  useGetAllPostsQuery,
   useGetPostByIdQuery,
+  useGetPostByNameQuery,
   useAddPostMutation,
   useUpdatePostMutation,
   useRemovePostMutation,

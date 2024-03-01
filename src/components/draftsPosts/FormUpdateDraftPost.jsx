@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 import Loader from '../Loader';
 import { setOptionsTags } from '../../store/slices/tagSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import createName from '../../utils/createName';
 
 const FormUpdateDraftPost = ({ post, tagsOptions }) => {
   const dispatch = useDispatch();
@@ -80,6 +81,7 @@ const FormUpdateDraftPost = ({ post, tagsOptions }) => {
   const handleUpdate = async ({ title, subtitle, body, tags }) => {
     const draft = {
       title,
+      name: createName(title),
       subtitle,
       body: DOMPurify.sanitize(body),
       tags,

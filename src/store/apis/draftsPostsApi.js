@@ -43,19 +43,6 @@ const draftsPostsApi = createApi({
           };
         },
       }),
-      getDraftPostByName: builder.query({
-        providesTags: (result, error) => {
-          return [{ type: 'DraftsPosts', id: result.post._id }];
-          // return ['DraftsPosts'];
-        },
-        query: (name) => {
-          return {
-            url: `${DRAFT_POST_URL}/${name}`,
-            method: 'GET',
-            credentials: 'include',
-          };
-        },
-      }),
       addDraftPost: builder.mutation({
         invalidatesTags: ['DraftsPosts'],
         query: (data) => {
@@ -64,6 +51,17 @@ const draftsPostsApi = createApi({
             method: 'POST',
             credentials: 'include',
             body: data,
+          };
+        },
+      }),
+      addDraftPostFromPost: builder.mutation({
+        invalidatesTags: ['DraftsPosts'],
+        query: ({ postId, name, title }) => {
+          return {
+            url: `${DRAFT_POST_URL}/${postId}`,
+            method: 'POST',
+            credentials: 'include',
+            body: { name, title },
           };
         },
       }),
@@ -99,7 +97,6 @@ const draftsPostsApi = createApi({
 export const {
   useGetDraftsPostsQuery,
   useGetDraftPostByIdQuery,
-  useGetDraftPostByNameQuery,
   useAddDraftPostMutation,
   useUpdateDraftPostMutation,
   useRemoveDraftPostMutation,
