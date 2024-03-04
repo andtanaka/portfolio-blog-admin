@@ -57,6 +57,7 @@ export {
   useGetDraftsPostsQuery,
   useGetDraftPostByIdQuery,
   useAddDraftPostMutation,
+  useAddDraftPostFromPostMutation,
   useUpdateDraftPostMutation,
   useRemoveDraftPostMutation,
 } from './apis/draftsPostsApi.js';

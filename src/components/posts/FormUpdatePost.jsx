@@ -7,11 +7,12 @@ import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import * as DOMPurify from 'dompurify';
 import { toast } from 'react-toastify';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Dropdown, Form } from 'react-bootstrap';
 import { useGetTagsQuery, useUpdatePostMutation } from '../../store';
 import Loader from '../Loader';
 import { setOptionsTags } from '../../store/slices/tagSlice';
 import createName from '../../utils/createName';
+import ModalExportPost from './ModalExportPost';
 
 const FormUpdatePost = ({ post, tagsOptions }) => {
   const dispatch = useDispatch();
@@ -138,13 +139,37 @@ const FormUpdatePost = ({ post, tagsOptions }) => {
           </Form.Group>
         </Form.Group>
 
-        <Form.Group className="d-flex pt-3 justify-content-end">
-          <div className="pe-2">
-            {/* redirecionar ao blog */}
-            <Button>Visualizar</Button>
+        <Form.Group className="d-flex pt-3">
+          <div className="d-flex w-100 flex-wrap">
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="options-to-export">
+                Exportar
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item>
+                  <ModalExportPost type="toDraftPost" post={post}>
+                    Novo rascunho
+                  </ModalExportPost>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <ModalExportPost type="toJsonFile" post={post}>
+                    Arquivo JSON
+                  </ModalExportPost>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
-          <div>
-            <Button onClick={handleSubmit(handleUpdate)}>Salvar</Button>
+          <div className="d-flex ms-auto">
+            <div className="pe-2">
+              <Button
+                onClick={() => navigate(`/admin/posts/${post._id}/preview`)}
+              >
+                Visualizar
+              </Button>
+            </div>
+            <div>
+              <Button onClick={handleSubmit(handleUpdate)}>Salvar</Button>
+            </div>
           </div>
         </Form.Group>
       </Form>

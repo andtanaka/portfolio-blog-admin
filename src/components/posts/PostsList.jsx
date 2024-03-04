@@ -9,6 +9,7 @@ import CardsPosts from './CardsPosts';
 const PostsList = () => {
   const query = useQuery();
   const { pageNumber } = useParams() || 1;
+  const stop = query.get('stop') || '';
   const text = query.get('text') || '';
   const sort = query.get('sort') || '';
   let content = <></>;
@@ -16,6 +17,7 @@ const PostsList = () => {
   const { data, error, isLoading } = useGetAllPostsQuery({
     text,
     sort,
+    stop,
     pageNumber,
   });
 

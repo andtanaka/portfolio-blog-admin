@@ -12,8 +12,8 @@ const draftsPostsApi = createApi({
         providesTags: (result, error, arg) => {
           const tags = [];
           if (result) {
-            result.draftPosts.map((post) => {
-              return tags.push({ type: 'DraftsPosts', id: post._id });
+            result.draftPosts.map((draftpost) => {
+              return tags.push({ type: 'DraftsPosts', id: draftpost._id });
             });
           }
           tags.push('DraftsPosts');
@@ -98,6 +98,7 @@ export const {
   useGetDraftsPostsQuery,
   useGetDraftPostByIdQuery,
   useAddDraftPostMutation,
+  useAddDraftPostFromPostMutation,
   useUpdateDraftPostMutation,
   useRemoveDraftPostMutation,
 } = draftsPostsApi;

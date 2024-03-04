@@ -9,11 +9,11 @@ const MenuDraftPost = ({ postId }) => {
   const navigate = useNavigate();
   const [createPost] = useAddPostMutation();
 
-  const handlePublish = async (id) => {
-    console.log(id);
-    const res = await createPost(id).unwrap();
+  const handlePublish = async () => {
+    const res = await createPost(postId).unwrap();
     toast.success('Rascunho postado com sucesso');
-    // navigate(`/admin/posts`);
+    navigate(`/admin/posts`, { replace: true });
+    navigate(0); //dá um refresh para dar um novo get em draftposts
     console.log(res);
   };
 
@@ -28,7 +28,7 @@ const MenuDraftPost = ({ postId }) => {
         </div>
         <p className={styles.textIcon}>Editar</p>
       </div>
-      <div className={styles.buttonIcon} onClick={() => handlePublish(postId)}>
+      <div className={styles.buttonIcon} onClick={handlePublish}>
         <div className={styles.icon}>
           <FaFileUpload />
         </div>

@@ -34,7 +34,7 @@ const PreviewPostPage = () => {
     content = (
       <>
         <Row>
-          <MenuPost postName={data.post} />
+          <MenuPost post={data.post} />
         </Row>
         <Row className="mt-3">
           <Col xs={{ span: 12, order: 2 }} md={{ span: 8, order: 1 }}>

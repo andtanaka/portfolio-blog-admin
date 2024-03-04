@@ -17,13 +17,18 @@
       text-overflow: ellipsis;
       height: 1.2em;
       white-space: nowrap;
+
+      .cardIcon {
+        margin-right: 0.5em;
+        color: $neutral-color-01;
+      }
     }
 
     .cardText {
       display: block;
       display: -webkit-box;
       max-width: 100%;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;

@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRemovePostMutation } from '../../store';
+import { LuLightbulb, LuLightbulbOff } from 'react-icons/lu';
 
 const CardsPosts = ({ posts }) => {
   const navigate = useNavigate();
@@ -30,7 +31,14 @@ const CardsPosts = ({ posts }) => {
               md={10}
               className={styles.buttonArea}
             >
-              <Card.Title className={styles.cardTitle}>{p.title}</Card.Title>
+              <Card.Title className={styles.cardTitle}>
+                {p.stop ? (
+                  <LuLightbulbOff className={styles.cardIcon} />
+                ) : (
+                  <LuLightbulb className={styles.cardIcon} />
+                )}
+                {p.title}
+              </Card.Title>
               <Card.Text className={styles.cardText}>{p.subtitle}</Card.Text>
             </Col>
 

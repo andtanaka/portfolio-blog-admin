@@ -51,7 +51,10 @@ const ModalUpdateTag = ({ tag, children }) => {
                 <Form.Label>Nome da tag</Form.Label>
                 <Form.Control
                   type="string"
-                  {...register('name', { required: true, pattern: /[a-z0-9]/ })}
+                  {...register('name', {
+                    required: true,
+                    pattern: /^[a-z0-9]*$/,
+                  })}
                   aria-invalid={errors.name ? 'true' : 'false'}
                 />
                 {errors.name?.type === 'required' && (

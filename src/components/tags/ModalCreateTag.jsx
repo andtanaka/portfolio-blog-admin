@@ -61,7 +61,10 @@ const ModalCreateTag = ({ children }) => {
                 <Form.Control
                   type="string"
                   placeholder="Nome do post"
-                  {...register('name', { required: true, pattern: /[a-z0-9]/ })}
+                  {...register('name', {
+                    required: true,
+                    pattern: /^[a-z0-9]*$/,
+                  })}
                   aria-invalid={errors.name ? 'true' : 'false'}
                 />
                 {errors.name?.type === 'required' && (

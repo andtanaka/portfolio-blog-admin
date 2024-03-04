@@ -57,12 +57,13 @@ const postsApi = createApi({
           tags.push('Posts');
           return tags;
         },
-        query: ({ text, sort, pageNumber }) => ({
+        query: ({ text, stop, sort, pageNumber }) => ({
           url: `${POST_URL}/all`,
           method: 'GET',
           credentials: 'include',
           params: {
             text,
+            stop,
             sort,
             pageNumber,
           },
