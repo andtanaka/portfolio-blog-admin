@@ -1,3 +1,27 @@
 .scrollspyTopic {
   padding: 5rem 0 2.5rem 0;
 }
+
+.tagsList {
+  display: flex;
+  padding: 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.tagCell {
+  margin: 0 0.3em;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.tagIcon {
+  font-weight: 500;
+}
+
+.postDate {
+  margin-bottom: 0;
+  font-weight: 500;
+}

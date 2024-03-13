@@ -49,15 +49,8 @@ const PreviewPostPage = () => {
           </Col>
           <Col xs={{ span: 12, order: 1 }} md={{ span: 4, order: 2 }}>
             <div className={styles.fixContainer}>
-              <Form className={styles.formSearch}>
-                <InputGroup className="mb-3">
-                  <Form.Control aria-label="Text input" />
-                  <Button variant="outline-secondary">
-                    <FaSearch />
-                  </Button>
-                </InputGroup>
-              </Form>
               <div className="d-md-block d-none">
+                <h5>Conteúdo do post:</h5>
                 <ul className={styles.subtopicsList}>
                   {data.post.subtopics.map((topic) => (
                     <Nav.Item as="li" key={topic.htmlId}>
@@ -66,7 +59,7 @@ const PreviewPostPage = () => {
                         href={`#${topic.htmlId}`}
                         data-to-scrollspy-id={topic.htmlId}
                       >
-                        {topic.name}
+                        # {topic.name}
                       </NavLink>
                     </Nav.Item>
                   ))}

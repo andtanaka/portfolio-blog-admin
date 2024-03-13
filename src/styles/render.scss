@@ -1,12 +1,33 @@
+@import './variables.scss';
 //configuração de estilo para "renderizar" os posts
 
 .render-content {
   text-wrap: wrap;
   overflow-wrap: break-word;
 
+  h3 {
+    font-size: 1.5em;
+  }
+  h4 {
+    font-size: 1.3em;
+  }
+  h5 {
+    font-size: 1.2em;
+  }
+
   p {
     padding: 0;
+    padding-bottom: 0.2em;
     margin: 0;
+
+    &.code {
+      color: $bold-color;
+      font-weight: 500;
+      background-color: rgba($neutral-color-02, 0.5);
+      padding: 0.15em;
+      padding-left: 1em;
+      margin: 0.2em 0;
+    }
   }
 
   img {
@@ -21,5 +42,23 @@
     &.large-image {
       width: 100%;
     }
+  }
+  code {
+    color: $bold-color;
+    font-weight: 500;
+    background-color: rgba($neutral-color-02, 0.5);
+    padding: 0.15em;
+    margin: 0 0.15em;
+
+    &.keyboard {
+      color: $neutral-color-01;
+      font-weight: 600;
+      background-color: rgba($neutral-color-51, 0.6);
+    }
+  }
+
+  .sub-p {
+    margin: 0.4em 0 1em 0.8em;
+    margin-left: 1em;
   }
 }
