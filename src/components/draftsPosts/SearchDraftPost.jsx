@@ -1,8 +1,7 @@
 import './SearchDraftPost.scss';
 import { useForm } from 'react-hook-form';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Button, Col, Dropdown, Form, InputGroup, Row } from 'react-bootstrap';
-import { useEffect, useState } from 'react';
 import { sortDatfsPosts } from '../../refs/sort';
 import { useQuery } from '../../hooks/useQuery';
 import { getSearchUrl } from '../../utils/getSearchUrl';

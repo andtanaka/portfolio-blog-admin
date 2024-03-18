@@ -1,7 +1,7 @@
 import styles from './ViewDraftPost.module.scss';
 import { marked } from 'marked'; //markdown to html
 import parse from 'html-react-parser'; //html to jsx
-import { Col, Container, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 const ViewDraftPost = ({ post }) => {
   return (

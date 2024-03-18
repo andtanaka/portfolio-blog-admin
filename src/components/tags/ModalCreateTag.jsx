@@ -1,7 +1,7 @@
 import '../../styles/ModalForm.scss';
 import { useState } from 'react';
 import { Button, Form, Row } from 'react-bootstrap';
-import Modal from 'react-bootstrap/modal';
+import { Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
 import { toast } from 'react-toastify';

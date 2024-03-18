@@ -50,9 +50,8 @@ body {
 //Side button
 
 .fix-side-bottom {
-  display: flex;
+  display: flex-end;
   position: fixed;
-  align-items: end;
   bottom: 0;
   right: 0;
   z-index: 100;
