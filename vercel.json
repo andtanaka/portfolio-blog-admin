@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "auth_token"
+        }
+      ],
+      "destination": "https://portfolio-backend-gilt-six.vercel.app/api/:path*"
+    }
+  ]
+}

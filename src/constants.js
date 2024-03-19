@@ -1,4 +1,5 @@
-export const BASE_URL = 'https://portfolio-backend-gilt-six.vercel.app/api';
+// export const BASE_URL = ''; //desenvolvimento
+export const BASE_URL = '/api'; //produção
 
 export const USER_URL = '/user';
 export const POST_URL = '/post';
