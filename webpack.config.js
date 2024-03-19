@@ -1,7 +1,7 @@
 const config = {
   //...
   devServer: {
-    allowedHosts: ['https://portfolio-blog-admin.onrender.com'],
+    allowedHosts: ['portfolio-blog-admin.onrender.com'],
   },
 };
 
