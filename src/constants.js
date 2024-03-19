@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://portfolio-backend-cqjq.onrender.com/api';
+export const BASE_URL = 'https://portfolio-backend-gilt-six.vercel.app/api';
 
 export const USER_URL = '/user';
 export const POST_URL = '/post';
